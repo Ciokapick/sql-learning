@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master SQL - Complete Guide</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        section {
+            margin-bottom: 30px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        h2 {
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        /* Exercises and Code Blocks */
+        .exercise {
+            background-color: #e9f7ff;
+            padding: 15px;
+            border-left: 4px solid #007BFF;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        code {
+            color: #d63384;
+        }
+        /* Image Styles */
+        .image-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            color: #777;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>How to Master SQL: Complete Guide</h1>
+        </header>
+
+        <!-- Cheat Sheet Section -->
+        <section>
+            <h2>💎 SQL Basics Cheat Sheet 💎</h2>
+            <div class="image-container">
+                <img src="pic1.jpg" alt="SQL Basics Cheat Sheet 1">
+                <img src="pic1.jpg" alt="SQL Basics Cheat Sheet 2">
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+        <!-- Basic Exercises Section -->
+  <section>
+      <h2>Beginner Exercises</h2>
+
+      <div class="exercise">
+          <h3>Example Exercise 1:</h3>
+          <p>Retrieve employee name, surname, country, and region:</p>
+          <pre><code>SELECT E.FIRST_NAME, E.LAST_NAME, C.COUNTRY_NAME, R.REGION_NAME
+FROM HR.EMPLOYEES E
+JOIN HR.DEPARTMENTS D ON (E.DEPARTMENT_ID = D.DEPARTMENT_ID)
+JOIN HR.LOCATIONS L ON (D.LOCATION_ID = L.LOCATION_ID)
+JOIN HR.COUNTRIES C ON (L.COUNTRY_ID = C.COUNTRY_ID)
+JOIN HR.REGIONS R ON (C.REGION_ID = R.REGION_ID);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Example Exercise 2:</h3>
+          <p>Display first name for employees whose names end in 'A':</p>
+          <pre><code>SELECT E.FIRST_NAME FROM HR.EMPLOYEES E
+WHERE FIRST_NAME LIKE '%a';</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Example Exercise 3:</h3>
+          <p>Display employees whose first name has the second character 'a' and whose salary is under 5000:</p>
+          <pre><code>SELECT E.FIRST_NAME FROM HR.EMPLOYEES
+WHERE SALARY < 5000 AND FIRST_NAME LIKE '_a%';</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Example Exercise 4:</h3>
+          <p>Display first name, last name, salary, and department ID for employees whose salary is less than 3000 or greater than 4000 and they are from department 50:</p>
+          <pre><code>SELECT FIRST_NAME, LAST_NAME, SALARY, DEPARTMENT_ID
+FROM HR.EMPLOYEES
+WHERE SALARY < 3000 OR (SALARY > 4000 AND DEPARTMENT_ID = 50);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Example Exercise 5:</h3>
+          <p>Display the number of employees:</p>
+          <pre><code>SELECT COUNT(*) AS EMPLOYEE_ID FROM HR.EMPLOYEES;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Example Exercise 6:</h3>
+          <p>Display the total amount spent on salaries:</p>
+          <pre><code>SELECT SUM(SALARY) FROM HR.EMPLOYEES;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Example Exercise 7:</h3>
+          <p>Display job ID, job name, last name, and first name:</p>
+          <pre><code>SELECT E.FIRST_NAME, E.LAST_NAME, E.JOB_ID, J.JOB_TITLE
+FROM HR.EMPLOYEES E
+JOIN HR.JOBS J ON (E.JOB_ID = J.JOB_ID);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Example Exercise 8:</h3>
+          <p>Display job ID, job title, and average salary for each job:</p>
+          <pre><code>SELECT E.JOB_ID, J.JOB_TITLE, AVG(E.SALARY)
+FROM HR.JOBS J
+JOIN HR.EMPLOYEES E ON J.JOB_ID = E.JOB_ID
+GROUP BY E.JOB_ID, J.JOB_TITLE;</code></pre>
+      </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Exercises 1 Section -->
+  <section>
+      <h2>💎 Easy Exercises💎</h2>
+
+      <div class="exercise">
+          <h3>Exercise 1:</h3>
+          <p>Employees whose salaries (including commission) are too high/too low for their job:</p>
+          <pre><code>SELECT E.LAST_NAME, E.FIRST_NAME, J.MIN_SALARY, J.MAX_SALARY, E.SALARY, E.COMMISSION_PCT
+FROM HR.EMPLOYEES E
+JOIN HR.JOBS J ON E.JOB_ID = J.JOB_ID
+WHERE (E.SALARY + (E.SALARY * COALESCE(E.COMMISSION_PCT, 0))) NOT BETWEEN J.MIN_SALARY AND J.MAX_SALARY;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 2:</h3>
+          <p>Display the maximum salary, minimum salary, average salary, and number of employees in each department:</p>
+          <pre><code>SELECT MIN(SALARY), MAX(SALARY), AVG(SALARY) AS MEDIA_SALARIILOR, COUNT(EMPLOYEE_ID) AS NR_ANGAJATI, DEPARTMENT_ID
+FROM HR.EMPLOYEES
+GROUP BY DEPARTMENT_ID;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 3:</h3>
+          <p>Display employees who receive a salary higher than a value entered from the keyboard:</p>
+          <pre><code>SELECT FIRST_NAME, LAST_NAME, SALARY
+FROM HR.EMPLOYEES
+WHERE SALARY > &SALARY;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 4:</h3>
+          <p>Display the number of employees in each department who have a salary lower than the average salary for the company:</p>
+          <pre><code>SELECT COUNT(*), DEPARTMENT_ID, AVG(SALARY)
+FROM HR.EMPLOYEES
+WHERE SALARY < (SELECT AVG(SALARY) FROM HR.EMPLOYEES)
+GROUP BY DEPARTMENT_ID;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 5:</h3>
+          <p>Display the number of employees in each department whose salary is within 1000 units of the average salary:</p>
+          <pre><code>SELECT COUNT(*), DEPARTMENT_ID
+FROM HR.EMPLOYEES
+WHERE SALARY >= (SELECT AVG(SALARY) FROM HR.EMPLOYEES) - 1000
+AND SALARY <= (SELECT AVG(SALARY) FROM HR.EMPLOYEES) + 1000
+GROUP BY DEPARTMENT_ID
+ORDER BY DEPARTMENT_ID ASC;</code></pre>
+      </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- Medium Exercises 2 Section -->
+  <section>
+      <h2>💎 Medium Exercises💎</h2>
+
+      <div class="exercise">
+          <h3>Exercise 1:</h3>
+          <p>Display employees whose salary is lower than the average salary in their department:</p>
+          <pre><code>SELECT e.EMPLOYEE_ID, e.FIRST_NAME, e.LAST_NAME, e.SALARY
+  FROM HR.EMPLOYEES e
+  JOIN (
+      SELECT DEPARTMENT_ID, AVG(SALARY) AS AVG_SALARY
+      FROM HR.EMPLOYEES
+      GROUP BY DEPARTMENT_ID
+  ) dept_avg ON e.DEPARTMENT_ID = dept_avg.DEPARTMENT_ID
+  WHERE e.SALARY < dept_avg.AVG_SALARY;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 2:</h3>
+          <p>Display the managers' departments sorted in descending order by the number of managers in each department (limited to 8 records):</p>
+          <pre><code>SELECT E.DEPARTMENT_ID, COUNT(*) AS NR_MANAGERI
+  FROM HR.EMPLOYEES
+  WHERE EMPLOYEE_ID IN (SELECT MANAGER_ID FROM HR.EMPLOYEES)
+  GROUP BY DEPARTMENT_ID
+  ORDER BY NR_MANAGERI DESC;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 3:</h3>
+          <p>Display managers' salaries:</p>
+          <pre><code>SELECT FIRST_NAME, LAST_NAME, SALARY
+  FROM HR.EMPLOYEES
+  WHERE EMPLOYEE_ID IN (SELECT MANAGER_ID FROM HR.EMPLOYEES WHERE MANAGER_ID IS NOT NULL);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 4:</h3>
+          <p>Display the average salaries of managers:</p>
+          <pre><code>SELECT AVG(SALARY) AS MEDIA_SALARIILOR_MANAGERILOR
+  FROM HR.EMPLOYEES
+  WHERE EMPLOYEE_ID IN (SELECT MANAGER_ID FROM HR.EMPLOYEES WHERE MANAGER_ID IS NOT NULL);</code></pre>
+      </div>
+  </section>
+
+
+
+
+
+
+  <!-- Intermediate Exercises Section -->
+  <section>
+      <h2>💎Hard Exercises 💎</h2>
+
+      <div class="exercise">
+          <h3>Exercise 1:</h3>
+          <p>Display employees who have a salary higher than at least one manager in their department:</p>
+          <pre><code>SELECT first_name || ' ' || last_name, salary
+  FROM HR.employees A
+  WHERE salary > ANY (
+      SELECT B.salary
+      FROM HR.employees B
+      WHERE A.department_id = B.department_id
+      AND employee_id IN (SELECT manager_id FROM HR.employees)
+  );</code></pre>
+          <p>This command identifies the maximum salary in your dataset.</p>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 2:</h3>
+          <p>Display employees who earn a higher salary than at least one department manager in the employee's department:</p>
+          <pre><code>SELECT first_name || ' ' || last_name, salary
+  FROM HR.employees A
+  WHERE salary > ANY (
+      SELECT B.salary
+      FROM HR.employees B, HR.departments C
+      WHERE A.department_id = C.department_id
+      AND employee_id IN (SELECT manager_id FROM HR.employees)
+      AND A.department_id = B.department_id
+  );</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 3:</h3>
+          <p>Create the product tables with the fields:</p>
+          <pre><code>CREATE TABLE produse (
+      codp NUMBER(3),
+      denmp VARCHAR2(3),
+      coddep NUMBER(3)
+  );
+
+  CREATE TABLE stocuri (
+      cods NUMBER(3),
+      cant NUMBER(4),
+      pret NUMBER(4)
+  );</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 4:</h3>
+          <p>Make the following changes in <code>produse</code>:</p>
+          <ul>
+              <li>Change <code>coddep</code> from <code>NUMBER(3)</code> to <code>VARCHAR2(5)</code></li>
+              <li>Add a new column <code>ump VARCHAR2(3)</code></li>
+          </ul>
+          <pre><code>ALTER TABLE produse MODIFY coddep VARCHAR2(5);
+  ALTER TABLE produse ADD ump VARCHAR2(3);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 5:</h3>
+          <p>Modify <code>stocuri</code>: Rename <code>cods</code> to <code>codp</code>, add the column <code>an NUMBER(4)</code> with a check constraint:</p>
+          <pre><code>ALTER TABLE stocuri RENAME COLUMN cods TO codp;
+  ALTER TABLE stocuri ADD an NUMBER(4);
+  ALTER TABLE stocuri ADD CONSTRAINT ck_an CHECK (an >= 1990 AND an <= 2050);
+
+  SELECT * FROM user_constraints;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 6:</h3>
+          <p>Set primary keys and foreign keys:</p>
+          <ul>
+              <li>Primary key for <code>produse</code>: <code>codp</code></li>
+              <li>Primary key for <code>stocuri</code>: <code>codp, an</code></li>
+              <li>Foreign key in <code>stocuri</code> referencing <code>produse</code></li>
+          </ul>
+          <pre><code>ALTER TABLE produse ADD CONSTRAINT pk_codp PRIMARY KEY (codp);
+  ALTER TABLE stocuri ADD CONSTRAINT pk_codpan PRIMARY KEY (codp, an);</code></pre>
+      </div>
+  </section>
+
+
+
+  <!-- SQL Tables Section -->
+  <section>
+      <h2>💎 SQL Tables 💎</h2>
+
+      <div class="exercise">
+          <h3>Create Tables:</h3>
+          <pre><code>CREATE TABLE PRODUSE (
+      codp NUMBER(3),
+      denp VARCHAR(30),
+      coddep NUMBER(3)
+  );
+
+  CREATE TABLE STOCURI (
+      cods NUMBER(10),
+      cant NUMBER(100),
+      pret NUMBER(10)
+  );</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Make the Following Changes:</h3>
+          <p>Modify <code>coddep</code> from <code>NUMBER(3)</code> to <code>VARCHAR(5)</code> and add a new column <code>ump VARCHAR(3)</code>:</p>
+          <pre><code>ALTER TABLE PRODUSE
+  MODIFY coddep VARCHAR(5);
+
+  ALTER TABLE PRODUSE
+  ADD ump VARCHAR(3);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Modify STOCURI Table:</h3>
+          <p>Rename <code>cods</code> to <code>codp</code> and add a new column <code>an NUMBER(4)</code> with a check constraint:</p>
+          <pre><code>ALTER TABLE STOCURI
+  ADD an NUMBER(1);
+
+  ALTER TABLE STOCURI
+  MODIFY an NUMBER(4);
+
+  ALTER TABLE STOCURI
+  RENAME COLUMN cods TO codp;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Set Primary Keys:</h3>
+          <p>Set primary keys for <code>PRODUSE</code> and <code>STOCURI</code> tables:</p>
+          <pre><code>ALTER TABLE PRODUSE
+  ADD PRIMARY KEY(codp);
+
+  ALTER TABLE STOCURI
+  ADD PRIMARY KEY(codp);</code></pre>
+      </div>
+  </section>
+
+
+
+
+
+  Here's the updated HTML section with the table exercises you provided:
+
+  html
+  Copiază codul
+  <!-- Table Exercises Section -->
+  <section>
+      <h2>💎 Table Exercises 💎</h2>
+
+      <div class="exercise">
+          <h3>Exercise 1:</h3>
+          <p>Add a foreign key to the <code>STOCURI</code> table referencing <code>PRODUSE</code>:</p>
+          <pre><code>ALTER TABLE STOCURI
+  ADD CONSTRAINT FK_STOCURI
+  FOREIGN KEY (CODP)
+  REFERENCES PRODUSE (CODP);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 2:</h3>
+          <p>Insert a record into the <code>PRODUSE</code> table:</p>
+          <pre><code>INSERT INTO PRODUSE (CODP, DENP, CODDEP, UMP)
+  VALUES ('1', 'X', 'SV', 'BUC');</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 3:</h3>
+          <p>Insert another record into the <code>PRODUSE</code> table:</p>
+          <pre><code>INSERT INTO PRODUSE (CODP, DENP, CODDEP, UMP)
+  VALUES ('2', 'Y', 'FLK', 'KG');</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 4:</h3>
+          <p>Insert a record into the <code>STOCURI</code> table:</p>
+          <pre><code>INSERT INTO STOCURI (CODP, CANT, PRET, AN)
+  VALUES ('1', '50', '5', '2017');</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 5:</h3>
+          <p>Insert another record into the <code>STOCURI</code> table:</p>
+          <pre><code>INSERT INTO STOCURI (CODP, CANT, PRET, AN)
+  VALUES ('2', '10', '5', '2017');</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 6:</h3>
+          <p>Create a view showing the employee with the highest salary:</p>
+          <pre><code>CREATE VIEW CEL_MAI_MARE_SALARIU AS
+  SELECT FIRST_NAME, SALARY
+  FROM HR.EMPLOYEES
+  WHERE SALARY = (SELECT MAX(SALARY) FROM HR.EMPLOYEES);</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 7:</h3>
+          <p>Grant all privileges on <code>PRODUSE</code> to <code>IE_DENIS24</code>:</p>
+          <pre><code>GRANT ALL PRIVILEGES ON PRODUSE TO IE_DENIS24;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 8:</h3>
+          <p>Revoke all privileges from <code>VLADUT_24</code> or specific permissions from <code>IE_IOANA24</code>:</p>
+          <pre><code>REVOKE ALL PRIVILEGES ON PRODUSE FROM VLADUT_24;
+
+  -- OR
+
+  REVOKE INSERT, DELETE, UPDATE ON PRODUSE FROM IE_IOANA24;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 9:</h3>
+          <p>Show all views created by the user:</p>
+          <pre><code>SELECT VIEW_NAME FROM USER_VIEWS;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 10:</h3>
+          <p>Grant update rights on the <code>PRODUSE</code> table to <code>IE_IOANA24</code>:</p>
+          <pre><code>GRANT UPDATE ON PRODUSE TO IE_IOANA24;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 11:</h3>
+          <p>Create a view for the <code>PRODUSE</code> table named <code>PRODUSE1</code>:</p>
+          <pre><code>CREATE VIEW PRODUSE1 AS
+  SELECT * FROM PRODUSE;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 12:</h3>
+          <p>Create a view to display a colleague's products:</p>
+          <pre><code>CREATE VIEW PRODUSE_IOANA AS
+  SELECT * FROM IE_IOANA24.PRODUSE;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 13:</h3>
+          <p>Grant the right to select from <code>PRODUSE1</code> to <code>IE_IOANA24</code>:</p>
+          <pre><code>GRANT SELECT ON PRODUSE1 TO IE_IOANA24;</code></pre>
+      </div>
+
+      <div class="exercise">
+          <h3>Exercise 14:</h3>
+          <p>Create a view to display a colleague's view of <code>PRODUSE1</code>:</p>
+          <pre><code>CREATE VIEW PRODUSE1_IOANA AS
+  SELECT * FROM IE_IOANA24.PRODUSE1;</code></pre>
+      </div>
+  </section>
+
+        <footer>
+            <p>Happy querying! Practice makes perfect.</p>
+        </footer>
+    </div>
+</body>
+</html>
